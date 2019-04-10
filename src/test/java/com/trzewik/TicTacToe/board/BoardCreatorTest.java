@@ -1,6 +1,6 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.board;
 
-import com.trzewik.OX.inputProvider.IllegalInterruptedException;
+import com.trzewik.TicTacToe.Sign;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -14,8 +14,8 @@ import java.util.Random;
 public class BoardCreatorTest {
 
     @Test(dataProvider = "getNumberOfColumnsAndRows")
-    public void checkIfEmptyBoardIsCreated(int numberOfColumns, int numberOfRows) throws IllegalSizeOfBoardException, IllegalInterruptedException {
-        BoardCreator boardCreator = new BoardCreator(numberOfColumns, numberOfRows);
+    public void checkIfEmptyBoardIsCreated(int numberOfColumns, int numberOfRows) {
+        BoardCreator boardCreator = new BoardCreator(numberOfRows, numberOfColumns);
         List<Field> board = boardCreator.createBoard();
         Random rand = new Random();
         Field field = board.get(rand.nextInt(board.size()));
@@ -32,23 +32,6 @@ public class BoardCreatorTest {
             {3,100},
             {55,55},
             {3,3}
-        };
-    }
-
-    @Test(dataProvider = "getWrongNumberOfColumnsAndRows", expectedExceptions = IllegalSizeOfBoardException.class)
-    public void checkIfBoardCantBeCreatedLessThan3MoreThan100(int numberOfColumns, int numberOfRows) throws IllegalSizeOfBoardException, IllegalInterruptedException {
-        new BoardCreator(numberOfColumns, numberOfRows);
-    }
-
-    @DataProvider
-    public static Object[][] getWrongNumberOfColumnsAndRows() {
-        return new Object[][] {
-                {5,101},
-                {200,9},
-                {2,18},
-                {10,2},
-                {1,1},
-                {2,2}
         };
     }
 }

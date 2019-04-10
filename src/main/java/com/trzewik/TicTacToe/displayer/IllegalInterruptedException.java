@@ -1,9 +1,9 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.displayer;
 
 /**
  * @author Agnieszka Trzewik
  */
-class IllegalInterruptedException extends Throwable {
+public class IllegalInterruptedException extends Throwable {
 
     IllegalInterruptedException(String message) {
         super(message);

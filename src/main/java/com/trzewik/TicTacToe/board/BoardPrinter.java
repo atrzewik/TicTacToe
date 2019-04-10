@@ -1,28 +1,41 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.board;
 
 
-import java.util.List;
+import com.trzewik.TicTacToe.Sign;
+import com.trzewik.TicTacToe.displayer.Language;
+import com.trzewik.TicTacToe.displayer.Logger;
+
 
 /**
  * @author Agnieszka Trzewik
  */
-class BoardPrinter {
+class BoardPrinter implements Observer {
 
-    private List<Field> board;
+    private Logger logger;
+    private Language language;
+    private int numberOfColumns;
+    private Board board;
 
-    void updateBoard(List<Field> board){
-        this.board = board;
+    BoardPrinter(Logger logger, Language language, int numberOfColumns) {
+        this.logger = logger;
+        this.numberOfColumns = numberOfColumns;
+        this.language = language;
     }
 
-    void printBoard(int numberOfColumns) {
-        for (int i = 0; i < board.size(); i++) {
-            Sign signOfField = board.get(i).signOfField();
+    void printBoard() {
+        for (int i = 0; i < board.countCapacity(); i++) {
+            Sign signOfField = board.gainSignOfField(i);
             String signToPrint = signOfField.equals(Sign.EMPTY) ? Integer.toString(i) : signOfField.name();
             if (i % (numberOfColumns) == numberOfColumns - 1) {
-                MessagePrinter.printMessageInNewLine("%-10s", signToPrint);
+                logger.display(language, "n%-10s", signToPrint);
             } else {
-                MessagePrinter.printMessage("%-10s",signToPrint);
+                logger.display(language, "%-10s", signToPrint);
             }
         }
+    }
+
+    @Override
+    public void update(Board board) {
+        this.board = board;
     }
 }

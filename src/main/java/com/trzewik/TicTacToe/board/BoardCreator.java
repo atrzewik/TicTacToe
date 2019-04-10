@@ -1,8 +1,4 @@
-package com.trzewik.TicTacToe;
-
-import com.trzewik.OX.inputProvider.BundleProvider;
-import com.trzewik.OX.inputProvider.IllegalInterruptedException;
-import com.trzewik.OX.settings.Settings;
+package com.trzewik.TicTacToe.board;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +8,14 @@ import java.util.List;
  */
 class BoardCreator {
 
-    private final int numberOfRows;
-    private final int numberOfColumns;
+    private int numberOfRows;
+    private int numberOfColumns;
 
-    BoardCreator(int numberOfColumns, int numberOfRows) throws IllegalSizeOfBoardException, IllegalInterruptedException {
-        this.numberOfColumns = assignValueOfBoardSize(numberOfColumns);
-        this.numberOfRows = assignValueOfBoardSize(numberOfRows);
+    BoardCreator(int numberOfRows, int numberOfColumns) {
+        this.numberOfRows = numberOfRows;
+        this.numberOfColumns = numberOfColumns;
     }
+
 
     List<Field> createBoard() {
         int capacity = countBoardCapacity();
@@ -29,19 +26,8 @@ class BoardCreator {
         return board;
     }
 
-    int countNumberOfColumns(){
-        return numberOfColumns;
-    }
-
     private int countBoardCapacity() {
         return numberOfRows * numberOfColumns;
     }
 
-    private int assignValueOfBoardSize(int valueOfBoardSize) throws IllegalSizeOfBoardException, IllegalInterruptedException {
-        if (valueOfBoardSize >= 3 && valueOfBoardSize <= 100) {
-            return valueOfBoardSize;
-        } else {
-            throw new IllegalSizeOfBoardException(BundleProvider.oxBundle(Settings.getInstance().getLanguage(), "wrong_board_size"));
-        }
-    }
 }

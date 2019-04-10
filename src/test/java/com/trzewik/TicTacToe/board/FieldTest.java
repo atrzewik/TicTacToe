@@ -1,5 +1,6 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.board;
 
+import com.trzewik.TicTacToe.Sign;
 import org.testng.annotations.Test;
 
 /**

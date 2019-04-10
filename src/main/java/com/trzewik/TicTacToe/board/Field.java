@@ -1,4 +1,6 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.board;
+
+import com.trzewik.TicTacToe.Sign;
 
 /**
  * @author Agnieszka Trzewik
