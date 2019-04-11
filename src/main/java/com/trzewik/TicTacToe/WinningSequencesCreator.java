@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author Agnieszka Trzewik
  */
-class AllWinningSequencesCreator {
+class WinningSequencesCreator {
 
     private int widthInt;
     private int heightInt;
@@ -14,7 +14,7 @@ class AllWinningSequencesCreator {
     private int boardSize;
     private List<List<Integer>> listOfSequences = new ArrayList<>();
 
-    AllWinningSequencesCreator(int widthInt, int heightInt, int winningConditionInt) {
+    WinningSequencesCreator(int widthInt, int heightInt, int winningConditionInt) {
         this.widthInt = widthInt;
         this.heightInt = heightInt;
         this.winningConditionInt = winningConditionInt;
@@ -34,8 +34,12 @@ class AllWinningSequencesCreator {
 
     private void createAllSequencesForField(int field) {
         if (isInLeftRange(field)) {
-            listOfSequences.add(verticalWinningSequence(field));
             listOfSequences.add(horizontalWinningSequence(field));
+        }
+        if (isInUpRange(field)){
+            listOfSequences.add(verticalWinningSequence(field));
+        }
+        if(isInLeftRange(field)&&isInUpRange(field)){
             listOfSequences.add(diagonalDownRightWinningSequence(field));
         }
         if (isInRightRange(field)) {
@@ -44,8 +48,11 @@ class AllWinningSequencesCreator {
     }
 
     private boolean isInLeftRange(int field) {
-        return (field % widthInt <= widthInt - winningConditionInt) &&
-                (field / widthInt <= heightInt - winningConditionInt);
+        return field % widthInt <= widthInt - winningConditionInt;
+    }
+
+    private boolean isInUpRange(int field){
+        return field / widthInt <= heightInt - winningConditionInt;
     }
 
     private boolean isInRightRange(int field) {
