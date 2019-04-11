@@ -64,7 +64,7 @@ class WinningSequencesCreator {
         List<Integer> sequence = new ArrayList<>();
         for (int i = 0; i < winningConditionInt; i++) {
             sequence.add(field);
-            field += heightInt;
+            field += widthInt;
         }
         return sequence;
     }

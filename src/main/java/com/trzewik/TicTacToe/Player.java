@@ -1,5 +1,7 @@
 package com.trzewik.TicTacToe;
 
+import java.util.Objects;
+
 /**
  * @author Agnieszka Trzewik
  */
@@ -33,7 +35,7 @@ public abstract class Player {
         score += points;
     }
 
-    public int countScore() {
+    int countScore() {
         return score;
     }
 
@@ -42,4 +44,19 @@ public abstract class Player {
         return name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return lastMove == player.lastMove &&
+                score == player.score &&
+                playerSign == player.playerSign &&
+                name.equals(player.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(playerSign, name, lastMove, score);
+    }
 }
