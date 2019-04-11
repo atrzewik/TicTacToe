@@ -24,13 +24,12 @@ public class Main {
             return;
         }
 
-
         width = args[0];
         height = args[1];
         winningCondition = args[2];
+
         String configuration = createBaseStringConfiguration();
         List<List<Integer>> allSequencesForAutomatedGame = getMoveSequencesForAutomatedGame();
-
         int indexOfCurrentPlayedSequence = 0;
 
         while (indexOfCurrentPlayedSequence < allSequencesForAutomatedGame.size()) {
@@ -52,8 +51,8 @@ public class Main {
     }
 
     private static List<List<Integer>> getMoveSequencesForAutomatedGame() {
-        AllWinningSequencesCreator allWinningSequencesCreator = new AllWinningSequencesCreator(Integer.parseInt(width), Integer.parseInt(height), Integer.parseInt(winningCondition));
-        List<List<Integer>> listOfSequences = allWinningSequencesCreator.createListOfSequences();
+        WinningSequencesCreator winningSequencesCreator = new WinningSequencesCreator(Integer.parseInt(width), Integer.parseInt(height), Integer.parseInt(winningCondition));
+        List<List<Integer>> listOfSequences = winningSequencesCreator.createListOfSequences();
         AllSequencesCreator allSequences = new AllSequencesCreator(Integer.parseInt(width), Integer.parseInt(height), Integer.parseInt(winningCondition), listOfSequences);
         return allSequences.createAllSequencesForAutomate();
     }
