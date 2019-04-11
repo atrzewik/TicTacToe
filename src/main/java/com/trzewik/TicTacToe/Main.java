@@ -28,30 +28,27 @@ public class Main {
         width = args[0];
         height = args[1];
         winningCondition = args[2];
-        String configuration = "y\n" + width + "\n" + height + "\n" + winningCondition + "\npolish\nO\nX\n";
-        List<List<Integer>> seq = returnResources();
+        String configuration = createBaseStringConfiguration();
+        List<List<Integer>> allSequencesForAutomatedGame = returnResources();
 
-        int seqNumber = 0;
+        int indexOfCurrentPlayedSequence = 0;
 
-        while (seqNumber < seq.size()) {
+        while (indexOfCurrentPlayedSequence < allSequencesForAutomatedGame.size()) {
 
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < 3; i++) {
-                if (seqNumber >= seq.size()) {
-                    System.out.println("Koniec symulacji.");
-                    return;
-                }
-                List<Integer> oneSeq = seq.get(seqNumber);
-                seqNumber++;
-                for (Integer integer : oneSeq) {
-                    stringBuilder.append(integer + "\n");
-                }
-            }
-            String stringForGame = configuration + stringBuilder.toString();
+            SingleSequencesCreatorForAutomate SingleSequencesCreatorForAutomate = new SingleSequencesCreatorForAutomate(allSequencesForAutomatedGame, indexOfCurrentPlayedSequence).ifIsPossibleCreateSequencesForSingleGame();
+            if (SingleSequencesCreatorForAutomate.isEndOfSequences()) return;
+            indexOfCurrentPlayedSequence = SingleSequencesCreatorForAutomate.getIndexOfCurrentPlayedSequence();
+            StringBuilder buildSequenceForOneGame = SingleSequencesCreatorForAutomate.getBuildSequenceForOneGame();
+            String threeSequencesForGame = configuration + buildSequenceForOneGame.toString();
 
-            new Game(new Scanner(stringForGame), new Settings(new ConsoleLogger())).play();
+            new Game(new Scanner(threeSequencesForGame), new Settings(new ConsoleLogger())).play();
 
         }
+    }
+
+
+    private static String createBaseStringConfiguration(){
+        return  "y\n" + width + "\n" + height + "\n" + winningCondition + "\npolish\nO\nX\n";
     }
 
     private static List<List<Integer>> returnResources() {

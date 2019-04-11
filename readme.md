@@ -5,7 +5,7 @@
 - GIT
 ## Running
 - open command line
-- go to destination directory for project, for example: `cd C:\MavenApp`
+- go to destination directory for project, for example: `cd C:\TicTacToeApp`
 - `git clone https://github.com/atrzewik/TicTacToe.git`
 - go to directory with app, for example: `cd C:\TicTacToeApp\TicTacToe`
 - clean install project: `mvn clean install`
