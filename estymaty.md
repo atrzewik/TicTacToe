@@ -2,7 +2,7 @@
 
 |Data  |Pesymistyczna|Realistyczna|Optymistyczna|
 :-------------------:|:-------------------:|:-------------------|-------------------:
-|14.03|Postawienie projektu, diagram przepływu| + CRC| + Tworzenie planszy o podanych wymiarach
-|18.03|Dodanie możliwości zaznaczanie na planszy zanku| + dodanie sprawdzania wygranej w pionie/poziomie| + dodanie sprawdzania wygranej w skosie
-|19.03|| + | +
-|20.03|| + | +
+|08.04|| + | +
+|09.04|| + | +
+|10.04|| + | +
+|11.04|| + | +
