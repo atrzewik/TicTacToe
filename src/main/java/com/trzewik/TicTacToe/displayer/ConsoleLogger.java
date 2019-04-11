@@ -1,8 +1,8 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.displayer;
 
 import java.util.MissingFormatArgumentException;
 
-import static com.trzewik.TicTacToe.Language.oxBundle;
+import static com.trzewik.TicTacToe.displayer.Language.oxBundle;
 
 /**
  * @author Agnieszka Trzewik

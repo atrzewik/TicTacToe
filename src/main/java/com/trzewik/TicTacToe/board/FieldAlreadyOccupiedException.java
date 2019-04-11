@@ -1,9 +1,9 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.board;
 
 /**
  * @author Agnieszka Trzewik
  */
-class FieldAlreadyOccupiedException extends Exception {
+class FieldAlreadyOccupiedException extends Throwable {
     FieldAlreadyOccupiedException(String message) {
         super(message);
     }

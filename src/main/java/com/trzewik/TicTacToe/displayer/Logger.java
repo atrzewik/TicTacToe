@@ -1,4 +1,4 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.displayer;
 
 /**
  * @author Agnieszka Trzewik

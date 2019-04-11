@@ -1,9 +1,9 @@
-package com.trzewik.OX;
+package com.trzewik.TicTacToe;
 
 /**
  * @author Agnieszka Trzewik
  */
-class Player {
+public abstract class Player {
 
     private Sign playerSign;
     private String name;
@@ -17,23 +17,23 @@ class Player {
         this.score = 0;
     }
 
-    Sign playerSign() {
+    public Sign playerSign() {
         return playerSign;
     }
 
-    void changeLastMove(int move){
-        lastMove = move;
-    }
-
-    int getLastMove() {
+    public int getLastMove() {
         return lastMove;
     }
 
-    void addPonits(int points){
+    public void changeLastMove(int move) {
+        lastMove = move;
+    }
+
+    public void addPoints(int points) {
         score += points;
     }
 
-    int countScore(){
+    public int countScore() {
         return score;
     }
 

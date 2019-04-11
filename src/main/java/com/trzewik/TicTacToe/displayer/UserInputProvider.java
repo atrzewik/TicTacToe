@@ -1,9 +1,8 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.displayer;
 
 import java.util.Scanner;
 
-import static com.trzewik.TicTacToe.Language.POLISH;
-import static com.trzewik.TicTacToe.Language.oxBundle;
+import static com.trzewik.TicTacToe.displayer.Language.oxBundle;
 
 /**
  * @author Agnieszka Trzewik
@@ -13,19 +12,13 @@ public class UserInputProvider {
     private Logger logger;
     private Scanner userInput;
 
-    private UserInputProvider(Scanner userInput, Logger logger){
+    private UserInputProvider(Scanner userInput, Logger logger) {
         this.userInput = userInput;
         this.logger = logger;
     }
 
-
-    public UserInputProvider userInputProvider(Scanner userInput, Logger logger){
+    public static UserInputProvider userInputProvider(Scanner userInput, Logger logger) {
         return new UserInputProvider(userInput, logger);
-    }
-
-    public static void main(String[] args) throws IllegalInterruptedException {
-        UserInputProvider userInputProvider = new UserInputProvider(new Scanner(System.in), new ConsoleLogger());
-        userInputProvider.collectString(POLISH, "input_must_be_string");
     }
 
     public Integer collectIntegerInRangeMinMax(Language language, Integer minimum, Integer maximum, String message, String... formats) throws IllegalInterruptedException {
@@ -37,7 +30,7 @@ public class UserInputProvider {
                 }
                 throw new ArithmeticException();
             } catch (ArithmeticException e) {
-                logger.displayError(language, "\ninput_must_be_int_in_range", minimum.toString(), maximum.toString());
+                logger.displayError(language, "input_must_be_int_in_range", minimum.toString(), maximum.toString());
             }
         }
     }
@@ -51,32 +44,21 @@ public class UserInputProvider {
                     return Integer.parseInt(input);
                 } else throw new IllegalInterruptedException(oxBundle(language, "user_interrupted"));
             } catch (NumberFormatException e) {
-                logger.displayError(language, "\ninput_must_be_int");
+                logger.displayError(language, "input_must_be_int");
             }
         }
     }
 
 
-    public Language collectProperLanguage(String message, String... formats) throws IllegalInterruptedException {
+    public Language collectProperLanguage(Language language, String message, String... formats) throws IllegalInterruptedException {
         while (true) {
             try {
-                return Language.languageMatcher(collectString(Language.ENGLISH, message, formats));
+                return Language.languageMatcher(collectString(language, message, formats), Language.POLISH);
             } catch (IllegalLanguageException e) {
-                logger.displayError(Language.ENGLISH, "\nlanguage_not_exist");
+                logger.displayError(language, "language_not_exist");
             }
         }
     }
-
-//    public Sign collectProperSign(Language language, String message, String... formats) throws IllegalInterruptedException {
-//        while (true) {
-//            try {
-//                return Sign.signMatcher(collectString(language, message, formats));
-//            } catch (IllegalSignException e) {
-//                logger.displayError(language, "input_must_be_o_x");
-//            }
-//
-//        }
-//    }
 
     public String collectString(Language language, String message, String... formats) throws IllegalInterruptedException {
         while (true) {
@@ -87,7 +69,7 @@ public class UserInputProvider {
                     return input;
                 } else throw new IllegalInterruptedException(oxBundle(language, "user_interrupted"));
             } catch (IllegalArgumentException e) {
-                logger.displayError(language, "\ninput_must_be_string");
+                logger.displayError(language, "input_must_be_string");
             }
         }
     }

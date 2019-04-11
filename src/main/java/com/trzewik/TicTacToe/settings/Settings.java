@@ -1,48 +1,39 @@
-package com.trzewik.OX.settings;
+package com.trzewik.TicTacToe.settings;
 
+import com.trzewik.TicTacToe.displayer.IllegalInterruptedException;
+import com.trzewik.TicTacToe.displayer.Language;
+import com.trzewik.TicTacToe.displayer.Logger;
 
-import com.trzewik.OX.inputProvider.IllegalInterruptedException;
-import com.trzewik.OX.inputProvider.Language;
+import java.util.Scanner;
 
 /**
  * @author Agnieszka Trzewik
  */
 public class Settings {
 
-
-    private static Settings instance = null;
+    private Logger logger;
     private GameSettings gameSettings;
     private Language language;
 
-    private Settings(GameSettings gameSettings, Language language) {
-        this.gameSettings = gameSettings;
-        this.language = language;
+    public Settings(Logger logger) {
+        this.logger = logger;
+        this.gameSettings = GameSettings.gameSettings(logger);
+        this.language = gameSettings.getLanguage();
     }
 
-    public static Settings getInstance() {
-        if (instance == null) {
-            instance = new Settings(new GameSettings(), Language.ENGLISH);
-        }
-        return Settings.instance;
-    }
-
-    public void updateSettings() throws IllegalInterruptedException {
-        new SettingsUpdater().updateSettings();
-    }
-
-    public Language getLanguage() {
-        return language;
-    }
-
-    public void changeLanguage() throws IllegalInterruptedException {
-        language = Language.chooseLanguage();
-    }
-
-    public void setGameSettings(String parameter) throws IllegalInterruptedException {
-        gameSettings.setSettings(parameter, language);
+    public void changeSettingsIfUserWant(Scanner scanner) throws IllegalInterruptedException {
+        new SettingsUpdater().changeSettingsIfUserWant(scanner, logger, language, gameSettings);
     }
 
     public int getGameSettings(String parameter) {
         return gameSettings.getSettings(parameter);
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public Language getLanguage() {
+        return gameSettings.getLanguage();
     }
 }

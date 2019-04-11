@@ -1,9 +1,9 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.displayer;
 
 /**
  * @author Agnieszka Trzewik
  */
-class IllegalLanguageException extends Throwable{
+public class IllegalLanguageException extends Throwable {
 
     IllegalLanguageException(String message) {
         super(message);

@@ -1,4 +1,4 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.displayer;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -25,14 +25,12 @@ public enum Language {
         return oxBundle(Language.POLISH, message);
     }
 
-    public static Language languageMatcher(String userInput) throws IllegalLanguageException {
+    public static Language languageMatcher(String userInput, Language languageToPrintError) throws IllegalLanguageException {
         for (Language language : values()) {
             if (language.name().equals(userInput.toUpperCase())) {
                 return language;
             }
         }
-        throw new IllegalLanguageException(oxBundle(POLISH, "wrong_language"));
-//        Settings.getInstance().getLanguage()
+        throw new IllegalLanguageException(oxBundle(languageToPrintError, "wrong_language"));
     }
-
 }

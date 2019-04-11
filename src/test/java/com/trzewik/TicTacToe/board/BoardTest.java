@@ -1,6 +1,9 @@
-package com.trzewik.TicTacToe;
+package com.trzewik.TicTacToe.board;
 
-import com.trzewik.OX.inputProvider.IllegalInterruptedException;
+import com.trzewik.TicTacToe.Sign;
+import com.trzewik.TicTacToe.displayer.Language;
+import com.trzewik.TicTacToe.settings.Settings;
+import org.mockito.Mockito;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,7 +14,7 @@ import org.testng.annotations.Test;
 public class BoardTest {
 
     @Test(dataProvider = "coordinatesAndSignsForBusyField", expectedExceptions = FieldAlreadyOccupiedException.class)
-    public void fieldIsBusySoFieldCanNotBeMarked(int field, Sign sign1, Sign sign2) throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void fieldIsBusySoFieldCanNotBeMarked(int field, Sign sign1, Sign sign2) throws FieldAlreadyOccupiedException {
         Board board = createBoard(5,5);
         board.markField(field, sign1);
         board.markField(field, sign2);
@@ -28,13 +31,13 @@ public class BoardTest {
     }
 
     @Test(dataProvider = "getNumberOfColumnsRowsAndCapacity")
-    public void capacityOfBoardIsRight(int numberOfColumns, int numberOfRows, int capacity) throws IllegalSizeOfBoardException, IllegalInterruptedException {
+    public void capacityOfBoardIsRight(int numberOfColumns, int numberOfRows, int capacity) {
         Board board = createBoard(numberOfColumns, numberOfRows);
         assert board.countCapacity() == capacity : "Capacity of board should be right";
     }
 
-    private Board createBoard(int numberOfColumns, int numberOfRows) throws IllegalSizeOfBoardException, IllegalInterruptedException {
-        return new Board(new BoardCreator(numberOfColumns, numberOfRows));
+    private Board createBoard(int numberOfColumns, int numberOfRows) {
+        return new Board(new BoardCreator(numberOfRows, numberOfColumns), numberOfColumns, Language.POLISH);
     }
 
     @DataProvider
@@ -48,24 +51,6 @@ public class BoardTest {
                 {55,55,3025},
                 {3,3,9},
                 {100,100,10000}
-        };
-    }
-
-
-    @Test(dataProvider = "getWrongNumberOfColumnsAndRows", expectedExceptions = IllegalSizeOfBoardException.class)
-    public void capacityOfBoardWrong(int numberOfColumns, int numberOfRows) throws IllegalSizeOfBoardException, IllegalInterruptedException {
-        createBoard(numberOfColumns, numberOfRows);
-    }
-
-    @DataProvider
-    public static Object[][] getWrongNumberOfColumnsAndRows() {
-        return new Object[][] {
-                {5,101},
-                {200,9},
-                {2,18},
-                {10,2},
-                {1,1},
-                {2,2}
         };
     }
 }

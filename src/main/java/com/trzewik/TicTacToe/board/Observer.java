@@ -3,7 +3,7 @@ package com.trzewik.TicTacToe.board;
 /**
  * @author Agnieszka Trzewik
  */
-public interface Watcher {
+public interface Observer {
 
-    void update();
+    void update(Board board);
 }
