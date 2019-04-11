@@ -78,7 +78,7 @@
                         <index>true</index>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.trzewik.TicTacToe.AutomatedMain</mainClass>
+                            <mainClass>com.trzewik.TicTacToe.Main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <mode>development</mode>

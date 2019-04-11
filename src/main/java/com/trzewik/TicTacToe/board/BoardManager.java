@@ -32,7 +32,7 @@ public class BoardManager {
         somePlayerWon = false;
     }
 
-    private void createBoard(int numberOfRows, int numberOfColumns){
+    private void createBoard(int numberOfRows, int numberOfColumns) {
         board = new Board(new BoardCreator(numberOfRows, numberOfColumns), numberOfColumns, language);
         board.addObserver(arbiter);
         board.addObserver(boardPrinter);
@@ -53,7 +53,7 @@ public class BoardManager {
         addPointsIfPlayerWon(player);
     }
 
-    public void printBoard(){
+    public void printBoard() {
         boardPrinter.printBoard();
     }
 
@@ -61,16 +61,16 @@ public class BoardManager {
         return somePlayerWon || board.countCapacity() == quantityOfMarkedFields;
     }
 
-    public void assignPointsIfDraw(Players players){
-        if (!somePlayerWon){
+    public void assignPointsIfDraw(Players players) {
+        if (!somePlayerWon) {
             for (int i = 0; i < players.numbersOfPlayers(); i++) {
                 players.getPlayer(i).addPoints(1);
             }
         }
     }
 
-    private void addPointsIfPlayerWon(Player player){
-        if (somePlayerWon){
+    private void addPointsIfPlayerWon(Player player) {
+        if (somePlayerWon) {
             player.addPoints(3);
         }
     }

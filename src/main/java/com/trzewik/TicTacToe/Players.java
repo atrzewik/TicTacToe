@@ -3,7 +3,6 @@ package com.trzewik.TicTacToe;
 import com.trzewik.TicTacToe.displayer.IllegalInterruptedException;
 import com.trzewik.TicTacToe.displayer.Language;
 import com.trzewik.TicTacToe.displayer.UserInputProvider;
-import com.trzewik.TicTacToe.settings.Settings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +28,11 @@ public class Players {
         return new Players(userInputProvider, language);
     }
 
-    public int numbersOfPlayers(){
+    public int numbersOfPlayers() {
         return players.size();
     }
 
-    public Player getPlayer(int playerIndex){
+    public Player getPlayer(int playerIndex) {
         return players.get(playerIndex);
     }
 

@@ -1,7 +1,5 @@
 package com.trzewik.TicTacToe.displayer;
 
-import com.trzewik.TicTacToe.settings.Settings;
-
 import java.util.Locale;
 import java.util.ResourceBundle;
 

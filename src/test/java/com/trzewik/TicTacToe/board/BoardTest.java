@@ -7,34 +7,11 @@ import org.mockito.Mockito;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Iterator;
-
 /**
  * @author Agnieszka Trzewik
  */
 @Test
 public class BoardTest {
-
-    @Test
-    public void checkIfHorizontalForwardIteratorWorkProperly() throws FieldAlreadyOccupiedException {
-        Board board = createBoard(9,3);
-        board.markField(13, Sign.O);
-        Board.MoveHorizontalForward moveHorizontalForward = board.moveHorizontalForward;
-        for (Iterator i = moveHorizontalForward.iterator(); i.hasNext(); )
-            System.out.println(i.next());
-        }
-
-    @Test
-    public void checkIfHorizontalBackwardIteratorWorkProperly() throws FieldAlreadyOccupiedException {
-        Board board = createBoard(5,5);
-        board.markField(7, Sign.O);
-        Board.MoveHorizontalBackward moveHorizontalBackward = board.moveHorizontalBackward;
-        for (int i = 0; i < 6; i++) {
-            if (moveHorizontalBackward.iterator().hasNext()) {
-                System.out.println(moveHorizontalBackward.iterator().next());
-            }
-        }
-    }
 
     @Test(dataProvider = "coordinatesAndSignsForBusyField", expectedExceptions = FieldAlreadyOccupiedException.class)
     public void fieldIsBusySoFieldCanNotBeMarked(int field, Sign sign1, Sign sign2) throws FieldAlreadyOccupiedException {
@@ -75,12 +52,5 @@ public class BoardTest {
                 {3,3,9},
                 {100,100,10000}
         };
-    }
-
-    private void setMockitoForTest(int numberOfColumns, int numberOfRows, int winningCondition){
-        Settings settings = Mockito.mock(Settings.class);
-        Mockito.when(settings.getGameSettings("number_of_columns")).thenReturn(numberOfColumns);
-        Mockito.when(settings.getGameSettings("number_of_rows")).thenReturn(numberOfRows);
-        Mockito.when(settings.getGameSettings("winning_condition")).thenReturn(winningCondition);
     }
 }

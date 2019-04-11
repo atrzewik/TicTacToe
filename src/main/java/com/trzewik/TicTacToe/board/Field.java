@@ -17,7 +17,7 @@ class Field {
         return sign;
     }
 
-    void setSignOfField(Sign sign){
+    void setSignOfField(Sign sign) {
         this.sign = sign;
     }
 }

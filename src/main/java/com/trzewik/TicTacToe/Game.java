@@ -1,7 +1,6 @@
 package com.trzewik.TicTacToe;
 
 import com.trzewik.TicTacToe.board.BoardManager;
-import com.trzewik.TicTacToe.board.IllegalSizeOfBoardException;
 import com.trzewik.TicTacToe.displayer.IllegalInterruptedException;
 import com.trzewik.TicTacToe.displayer.Language;
 import com.trzewik.TicTacToe.displayer.Logger;
@@ -53,8 +52,8 @@ public class Game {
         logger.display(language, "end");
     }
 
-    private void countSurrender(){
-        int leftAmountOfPoints = (numberOfRounds + 1 - numberOfRound)*3;
+    private void countSurrender() {
+        int leftAmountOfPoints = (numberOfRounds + 1 - numberOfRound) * 3;
         players.changeCurrentPlayer();
         players.getCurrentPlayer().addPoints(leftAmountOfPoints);
     }

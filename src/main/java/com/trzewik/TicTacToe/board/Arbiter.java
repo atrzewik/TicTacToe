@@ -2,10 +2,11 @@ package com.trzewik.TicTacToe.board;
 
 
 import com.trzewik.TicTacToe.Player;
+
 /**
  * @author Agnieszka Trzewik
  */
-public class Arbiter implements Observer{
+public class Arbiter implements Observer {
 
     private Board board;
     private int winningCondition;

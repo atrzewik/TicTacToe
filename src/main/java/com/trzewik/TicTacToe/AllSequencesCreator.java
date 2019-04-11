@@ -13,7 +13,7 @@ public class AllSequencesCreator {
     private List<List<Integer>> listOfSequences;
     private List<List<Integer>> allSequencesForAutomate = new ArrayList<>();
 
-    AllSequencesCreator(int widthInt, int heightInt, int winningConditionInt, List<List<Integer>> listOfSequences){
+    AllSequencesCreator(int widthInt, int heightInt, int winningConditionInt, List<List<Integer>> listOfSequences) {
         this.winningConditionInt = winningConditionInt;
         this.listOfSequences = listOfSequences;
         this.boardSize = widthInt * heightInt;

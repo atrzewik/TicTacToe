@@ -1,6 +1,9 @@
 package com.trzewik.TicTacToe.settings;
 
-import com.trzewik.TicTacToe.displayer.*;
+import com.trzewik.TicTacToe.displayer.IllegalInterruptedException;
+import com.trzewik.TicTacToe.displayer.Language;
+import com.trzewik.TicTacToe.displayer.Logger;
+import com.trzewik.TicTacToe.displayer.UserInputProvider;
 
 import java.util.Map;
 import java.util.Scanner;

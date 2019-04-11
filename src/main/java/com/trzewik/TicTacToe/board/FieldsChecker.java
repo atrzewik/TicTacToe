@@ -13,7 +13,7 @@ public class FieldsChecker implements Iterable<Integer> {
     private int boardCapacity;
     private int winningCondition;
 
-    FieldsChecker(int currentField, int numberOfColumns, int boardCapacity, int winningCondition, DirectionToGo directionToGo){
+    FieldsChecker(int currentField, int numberOfColumns, int boardCapacity, int winningCondition, DirectionToGo directionToGo) {
         this.currentField = currentField;
         this.numberOfColumns = numberOfColumns;
         this.directionToGo = directionToGo;
@@ -21,7 +21,7 @@ public class FieldsChecker implements Iterable<Integer> {
         this.winningCondition = winningCondition;
     }
 
-    public void updateCurrentFieldAndDirection(int currentFieldToSet, DirectionToGo directionToUpdate){
+    public void updateCurrentFieldAndDirection(int currentFieldToSet, DirectionToGo directionToUpdate) {
         currentField = currentFieldToSet;
         directionToGo = directionToUpdate;
     }
@@ -88,8 +88,8 @@ public class FieldsChecker implements Iterable<Integer> {
             @Override
             public boolean hasNext() {
                 int fieldToCheck = currentField + numberOfColumns + 1;
-                int height = boardCapacity/numberOfColumns;
-                return (fieldToCheck % numberOfColumns <= numberOfColumns - winningCondition) && (fieldToCheck/numberOfColumns <= height - winningCondition);
+                int height = boardCapacity / numberOfColumns;
+                return (fieldToCheck % numberOfColumns <= numberOfColumns - winningCondition) && (fieldToCheck / numberOfColumns <= height - winningCondition);
             }
 
             @Override
@@ -112,12 +112,17 @@ public class FieldsChecker implements Iterable<Integer> {
             }
         };
 
-        switch (directionToGo){
-            case HORFOR:return horizontalForward;
-            case HORBACK:return horizontalBackward;
-            case VERFOR:return verticalForward;
-            case VERBACK:return verticalBackward;
-            default:return null;
+        switch (directionToGo) {
+            case HORFOR:
+                return horizontalForward;
+            case HORBACK:
+                return horizontalBackward;
+            case VERFOR:
+                return verticalForward;
+            case VERBACK:
+                return verticalBackward;
+            default:
+                return null;
         }
     }
 }

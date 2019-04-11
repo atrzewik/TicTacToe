@@ -4,7 +4,6 @@ import com.trzewik.TicTacToe.Sign;
 import com.trzewik.TicTacToe.displayer.Language;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static com.trzewik.TicTacToe.displayer.Language.oxBundle;
@@ -18,8 +17,6 @@ class Board implements SubjectOfObservation {
     private int numberOfColumns;
     private Language language;
     private List<Observer> observerList = new ArrayList<>();
-    public MoveHorizontalForward moveHorizontalForward = new MoveHorizontalForward();
-    public MoveHorizontalBackward moveHorizontalBackward = new MoveHorizontalBackward();
     private int currentField;
 
     Board(BoardCreator boardCreator, int numberOfColumns, Language language) {
@@ -28,7 +25,7 @@ class Board implements SubjectOfObservation {
         this.language = language;
     }
 
-    public int getCurrentField(){
+    public int getCurrentField() {
         return currentField;
     }
 
@@ -75,81 +72,4 @@ class Board implements SubjectOfObservation {
     private Field gainField(int fieldOnBoard) {
         return board.get(fieldOnBoard);
     }
-
-    class MoveHorizontalForward implements Iterable<Integer> {
-
-        @Override
-        public Iterator<Integer> iterator() {
-            return new Iterator<Integer>() {
-                @Override
-                public boolean hasNext() {
-                    int minimumNumberOfFieldForHorizontalCheck = (currentField / numberOfColumns) * numberOfColumns;
-                    int maximumNumberOfFieldForHorizontalCheck = minimumNumberOfFieldForHorizontalCheck + numberOfColumns - 1;
-                    return currentField < maximumNumberOfFieldForHorizontalCheck;
-                }
-
-                @Override
-                public Integer next() {
-                    currentField += 1;
-                    return currentField;
-                }
-            };
-        }
-    }
-
-    class MoveHorizontalBackward implements Iterable<Integer> {
-        @Override
-        public Iterator<Integer> iterator() {
-            return new Iterator<Integer>() {
-                @Override
-                public boolean hasNext() {
-                    int minimumNumberOfFieldForHorizontalCheck = (currentField / numberOfColumns) * numberOfColumns;
-                    return currentField > minimumNumberOfFieldForHorizontalCheck;
-                }
-
-                @Override
-                public Integer next() {
-                    currentField -= 1;
-                    return currentField;
-                }
-            };
-
-        }
-    }
-
-//    class MoveVerticalForward implements Iterable {
-//        @Override
-//        public Iterator<Field> iterator() {
-//            return new Iterator<Field>() {
-//                @Override
-//                public boolean hasNext() {
-//                    return currentField > minimumNumberOfFieldForHorizontalCheck && currentField < maximumNumberOfFieldForHorizontalCheck;
-//                }
-//
-//                @Override
-//                public Field next() {
-//                    return gainField(currentField + 1);
-//                }
-//            };
-//
-//        }
-//    }
-//
-//    class MoveVerticalBackword implements Iterable {
-//        @Override
-//        public Iterator<Field> iterator() {
-//            return new Iterator<Field>() {
-//                @Override
-//                public boolean hasNext() {
-//                    return currentField > minimumNumberOfFieldForHorizontalCheck && currentField < maximumNumberOfFieldForHorizontalCheck;
-//                }
-//
-//                @Override
-//                public Field next() {
-//                    return gainField(currentField - 1);
-//                }
-//            };
-//
-//        }
-//    }
 }
