@@ -17,7 +17,7 @@ public class Game {
     private Players players;
     private Settings settings;
     private Scanner scanner;
-    private int numberOfRound;
+    private Integer numberOfRound;
     private int numberOfRounds = 3;
 
     Game(Scanner scanner, Settings settings) {
@@ -44,12 +44,14 @@ public class Game {
             }
 
         } catch (IllegalInterruptedException e) {
-            countSurrender();
-            logger.display(language, "current_results", players.getPlayer(0).toString(), Integer.toString(players.getPlayer(0).countScore()),
-                    players.getPlayer(1).toString(), Integer.toString(players.getPlayer(1).countScore()));
+            if (numberOfRound != null) {
+                countSurrender();
+                logger.display(language, "current_results", players.getPlayer(0).toString(), Integer.toString(players.getPlayer(0).countScore()),
+                        players.getPlayer(1).toString(), Integer.toString(players.getPlayer(1).countScore()));
+            }
             logger.display(language, "end");
         }
-        logger.display(language, "end");
+        logger.display(language, "end_game");
     }
 
     private void countSurrender() {
