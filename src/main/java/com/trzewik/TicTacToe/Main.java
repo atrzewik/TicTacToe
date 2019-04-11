@@ -29,7 +29,7 @@ public class Main {
         height = args[1];
         winningCondition = args[2];
         String configuration = createBaseStringConfiguration();
-        List<List<Integer>> allSequencesForAutomatedGame = returnResources();
+        List<List<Integer>> allSequencesForAutomatedGame = getMoveSequencesForAutomatedGame();
 
         int indexOfCurrentPlayedSequence = 0;
 
@@ -51,7 +51,7 @@ public class Main {
         return  "y\n" + width + "\n" + height + "\n" + winningCondition + "\npolish\nO\nX\n";
     }
 
-    private static List<List<Integer>> returnResources() {
+    private static List<List<Integer>> getMoveSequencesForAutomatedGame() {
         AllWinningSequencesCreator allWinningSequencesCreator = new AllWinningSequencesCreator(Integer.parseInt(width), Integer.parseInt(height), Integer.parseInt(winningCondition));
         List<List<Integer>> listOfSequences = allWinningSequencesCreator.createListOfSequences();
         AllSequencesCreator allSequences = new AllSequencesCreator(Integer.parseInt(width), Integer.parseInt(height), Integer.parseInt(winningCondition), listOfSequences);
