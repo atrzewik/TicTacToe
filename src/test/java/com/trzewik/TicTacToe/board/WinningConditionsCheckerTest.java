@@ -3,7 +3,6 @@ package com.trzewik.TicTacToe.board;
 import com.trzewik.TicTacToe.Player;
 import com.trzewik.TicTacToe.PlayerO;
 import com.trzewik.TicTacToe.Sign;
-import com.trzewik.TicTacToe.displayer.IllegalInterruptedException;
 import com.trzewik.TicTacToe.displayer.Language;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,7 +16,7 @@ import java.util.Random;
 public class WinningConditionsCheckerTest {
 
     @Test(dataProvider = "dataForWinningDiagonalUpCondition")
-    public void diagonalUpWinningConditionIsMet(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException, IllegalInterruptedException {
+    public void diagonalUpWinningConditionIsMet(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(field);
         Board board = createBoard(numberOfColumns, numberOfRows);
@@ -41,7 +40,7 @@ public class WinningConditionsCheckerTest {
     }
 
     @Test()
-    public void checkDiagonalUpConditionIsWrong() throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void checkDiagonalUpConditionIsWrong() throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(26);
         Board board = createBoard(7, 5);
@@ -53,7 +52,7 @@ public class WinningConditionsCheckerTest {
     }
 
     @Test()
-    public void diagonalWinningConditionIsMetIsCheckedProperly() throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void diagonalWinningConditionIsMetIsCheckedProperly() throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(21);
         Board board = createBoard(7, 5);
@@ -66,7 +65,7 @@ public class WinningConditionsCheckerTest {
     }
 
     @Test()
-    public void diagonalWinningConditionIsWrong() throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void diagonalWinningConditionIsWrong() throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(13);
         Board board = createBoard(7, 5);
@@ -80,7 +79,7 @@ public class WinningConditionsCheckerTest {
     }
 
     @Test(dataProvider = "dataForWinningDiagonalCondition")
-    public void diagonalWinningConditionIsMet(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void diagonalWinningConditionIsMet(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(field);
         Board board = createBoard(numberOfColumns, numberOfRows);
@@ -103,7 +102,7 @@ public class WinningConditionsCheckerTest {
     }
 
     @Test(dataProvider = "dataForWinningHorizontalCondition")
-    public void horizontalWinningConditionIsMet(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void horizontalWinningConditionIsMet(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(field);
         Board board = createBoard(numberOfColumns, numberOfRows);
@@ -127,7 +126,7 @@ public class WinningConditionsCheckerTest {
     }
 
     @Test(dataProvider = "dataForWinningHorizontalConditionUpsideDown")
-    public void horizontalWinningConditionIsMetUpsideDown(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void horizontalWinningConditionIsMetUpsideDown(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(field);
         Board board = createBoard(numberOfColumns, numberOfRows);
@@ -151,7 +150,7 @@ public class WinningConditionsCheckerTest {
     }
 
     @Test(dataProvider = "dataForWinningVerticalCondition")
-    public void verticalWinningConditionIsMet(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void verticalWinningConditionIsMet(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(field);
         Board board = createBoard(numberOfColumns, numberOfRows);
@@ -179,7 +178,7 @@ public class WinningConditionsCheckerTest {
     }
 
     @Test(enabled = false, dataProvider = "dataForLoosingVerticalCondition")
-    public void verticalWinningConditionNotExist(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws IllegalSizeOfBoardException, FieldAlreadyOccupiedException, IllegalInterruptedException {
+    public void verticalWinningConditionNotExist(int numberOfColumns, int numberOfRows, int field, Sign sign, int winningCondition) throws FieldAlreadyOccupiedException {
         Player player = new PlayerO("Jaś");
         player.changeLastMove(field);
         Board board = createBoard(numberOfColumns, numberOfRows);

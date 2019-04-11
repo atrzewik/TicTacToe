@@ -41,13 +41,12 @@ public class Main {
             String threeSequencesForGame = configuration + buildSequenceForOneGame.toString();
 
             new Game(new Scanner(threeSequencesForGame), new Settings(new ConsoleLogger())).play();
-
         }
     }
 
 
-    private static String createBaseStringConfiguration(){
-        return  "y\n" + width + "\n" + height + "\n" + winningCondition + "\npolish\nO\nX\n";
+    private static String createBaseStringConfiguration() {
+        return "y\n" + width + "\n" + height + "\n" + winningCondition + "\npolish\nO\nX\n";
     }
 
     private static List<List<Integer>> getMoveSequencesForAutomatedGame() {
