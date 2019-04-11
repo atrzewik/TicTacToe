@@ -34,6 +34,6 @@ public class Settings {
     }
 
     public Language getLanguage() {
-        return language;
+        return gameSettings.getLanguage();
     }
 }

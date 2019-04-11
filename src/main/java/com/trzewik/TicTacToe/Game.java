@@ -19,6 +19,8 @@ public class Game {
     private Scanner scanner;
     private Integer numberOfRound;
     private int numberOfRounds = 3;
+    private Logger logger;
+    private Language language;
 
     Game(Scanner scanner, Settings settings) {
         this.scanner = scanner;
@@ -26,11 +28,11 @@ public class Game {
     }
 
     void play() {
-        Logger logger = settings.getLogger();
-        Language language = settings.getLanguage();
-        UserInputProvider userInputProvider = UserInputProvider.userInputProvider(scanner, settings.getLogger());
         try {
             settings.changeSettingsIfUserWant(scanner);
+            logger = settings.getLogger();
+            language = settings.getLanguage();
+            UserInputProvider userInputProvider = UserInputProvider.userInputProvider(scanner, logger);
             players = Players.buildPlayers(userInputProvider, language);
             BoardManager boardManager = new BoardManager(settings, userInputProvider);
 
