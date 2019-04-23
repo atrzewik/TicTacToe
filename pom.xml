@@ -9,7 +9,7 @@
     <version>0.1</version>
     <name>#NAME</name>
     <description>#DESC</description>
-    <url>lafk.pl</url>
+    <url>#URL</url>
   
     <properties>
              <!-- https://maven.apache.org/general.html#encoding-warning -->
